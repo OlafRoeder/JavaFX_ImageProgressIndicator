@@ -12,7 +12,6 @@ import java.util.concurrent.*;
  * uncaught Exceptions and supports Thread renaming. <br>
  * API: <br>
  * {@link #submit(Runnable)}<br>
- * {@link #setTaskName(String)}
  */
 public class GlobalExecutorService {
 
@@ -47,22 +46,13 @@ public class GlobalExecutorService {
     }
 
     /**
-     * Sets name as name of the thread the task is run in.
-     *
-     * @param taskName Name to set for the active thread
-     */
-    private static void setTaskName(String taskName) {
-        Thread.currentThread().setName(taskName);
-    }
-
-    /**
      * Submits a {@link Runnable} task to the underlying {@link ExecutorService}.
      * The task will be executed asynchronously, so there is no guarantee that
      * subsequent submitted tasks are run in order.
      *
      * @param task A {@link Runnable} object.
      *
-     * @return A {@link Future} holding the result of the task
+     * @return A {@link Future}. The Future's get method will return null upon successful completion.
      */
     public static Future<?> submit(@NonNull Runnable task) {
 
@@ -81,8 +71,13 @@ public class GlobalExecutorService {
 
         try {
 
-            if (!EXECUTOR.awaitTermination(TIMEOUT, TimeUnit.MILLISECONDS))
+            if (!EXECUTOR.awaitTermination(TIMEOUT, TimeUnit.MILLISECONDS)) {
+
                 EXECUTOR.shutdownNow().forEach(task -> logger.debug("Still running task: " + task.getClass()));
+
+                if (!EXECUTOR.awaitTermination(TIMEOUT, TimeUnit.MILLISECONDS))
+                    logger.error(EXECUTOR + " could not shut down properly.");
+            }
 
         } catch (InterruptedException e) {
             EXECUTOR.shutdownNow();
