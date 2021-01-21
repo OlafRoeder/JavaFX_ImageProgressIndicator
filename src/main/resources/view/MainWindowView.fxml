@@ -7,11 +7,11 @@
       xmlns="http://javafx.com/javafx/11.0.1" fx:controller="view.MainWindowView">
 
     <MenuBar VBox.vgrow="NEVER">
-        <Menu mnemonicParsing="false" text="Task">
-            <MenuItem mnemonicParsing="false" onAction="#onTask" text="Long running Task"/>
-        </Menu>
         <Menu mnemonicParsing="false" text="File">
             <MenuItem mnemonicParsing="false" onAction="#onQuit" text="Quit"/>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Task">
+            <MenuItem mnemonicParsing="false" onAction="#onTask" text="Long running Task"/>
         </Menu>
     </MenuBar>
     <StackPane prefHeight="150.0" prefWidth="200.0" VBox.vgrow="SOMETIMES">
