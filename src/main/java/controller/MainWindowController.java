@@ -3,12 +3,15 @@ package controller;
 import application.Application;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.layout.VBox;
+import javafx.fxml.Initializable;
 import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MainWindowController extends VBox {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class MainWindowController implements Initializable {
 
     private static final Logger logger = LoggerFactory.getLogger(MainWindowController.class);
 
@@ -16,6 +19,11 @@ public class MainWindowController extends VBox {
 
     public MainWindowController(@NonNull Application application) {
         this.application = application;
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // place propertybindings here
     }
 
     @FXML
