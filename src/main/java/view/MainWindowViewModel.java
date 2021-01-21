@@ -36,8 +36,11 @@ public class MainWindowViewModel {
             }
 
             @Override
-            protected void failed() {
-                //override this for errorhandling
+            protected void succeeded() {
+
+                logger.debug("long running task succeeded");
+
+                textProperty.set(getValue());
             }
 
             @Override
@@ -46,11 +49,8 @@ public class MainWindowViewModel {
             }
 
             @Override
-            protected void succeeded() {
-
-                logger.debug("long running task succeeded");
-
-                textProperty.set(getValue());
+            protected void failed() {
+                //override this for errorhandling
             }
         });
     }
