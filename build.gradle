@@ -41,7 +41,7 @@ dependencies {
 application {
 
     // Define the main class for the application.
-    mainClassName = 'application.Main'
+    mainClass = 'application.Main'
 
 }
 
