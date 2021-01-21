@@ -1,9 +1,9 @@
 package controller;
 
 import application.Application;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,14 +16,20 @@ public class MainWindowController implements Initializable {
     private static final Logger logger = LoggerFactory.getLogger(MainWindowController.class);
 
     private final Application application;
+    private final MainWindowViewModel viewModel;
 
-    public MainWindowController(@NonNull Application application) {
+    @FXML
+    private Label labelIdentifier;
+
+    public MainWindowController(@NonNull Application application, MainWindowViewModel viewModel) {
         this.application = application;
+        this.viewModel = viewModel;
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // place propertybindings here
+        labelIdentifier.textProperty().bind(viewModel.textProperty());
     }
 
     @FXML
@@ -33,21 +39,6 @@ public class MainWindowController implements Initializable {
 
     @FXML
     public void onTask() {
-
-        application.execute(new Task<Void>() {
-
-            @Override
-            protected Void call() {
-
-                logger.debug("long running task start");
-
-                return null;
-            }
-
-            @Override
-            protected void succeeded() {
-                logger.debug("long running task succeeded");
-            }
-        });
+        viewModel.onTask();
     }
 }

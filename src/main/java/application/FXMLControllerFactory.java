@@ -1,6 +1,7 @@
 package application;
 
 import controller.MainWindowController;
+import controller.MainWindowViewModel;
 import javafx.util.Callback;
 
 class FXMLControllerFactory implements Callback<Class<?>, Object> {
@@ -16,7 +17,7 @@ class FXMLControllerFactory implements Callback<Class<?>, Object> {
     public Object call(Class<?> type) {
 
         if (type.isAssignableFrom(MainWindowController.class))
-            return new MainWindowController(application);
+            return new MainWindowController(application, new MainWindowViewModel(application));
 
         throw new IllegalStateException("No controller class found for " + type);
     }
