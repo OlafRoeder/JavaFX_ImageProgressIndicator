@@ -2,8 +2,8 @@ package application;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.demo.DemoApplication;
 import org.slf4j.Logger;
@@ -45,7 +45,7 @@ public class Main extends Application {
         loader.setLocation(resource);
         loader.setControllerFactory(application.getFxmlControllerFactory());
 
-        VBox mainWindow = loader.load();
+        Parent mainWindow = loader.load();
 
         Scene scene = new Scene(mainWindow);
 

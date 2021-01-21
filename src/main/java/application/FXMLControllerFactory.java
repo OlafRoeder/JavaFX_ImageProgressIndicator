@@ -9,7 +9,7 @@ class FXMLControllerFactory implements Callback<Class<?>, Object> {
     private final Application application;
 
     FXMLControllerFactory(Application application) {
-        /*package restricted constructor*/
+        //package restricted constructor
         this.application = application;
     }
 
