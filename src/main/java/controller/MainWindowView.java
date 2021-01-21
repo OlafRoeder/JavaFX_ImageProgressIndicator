@@ -11,9 +11,9 @@ import org.slf4j.LoggerFactory;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainWindowController implements Initializable {
+public class MainWindowView implements Initializable {
 
-    private static final Logger logger = LoggerFactory.getLogger(MainWindowController.class);
+    private static final Logger logger = LoggerFactory.getLogger(MainWindowView.class);
 
     private final Application application;
     private final MainWindowViewModel viewModel;
@@ -21,7 +21,7 @@ public class MainWindowController implements Initializable {
     @FXML
     private Label labelIdentifier;
 
-    public MainWindowController(@NonNull Application application, MainWindowViewModel viewModel) {
+    public MainWindowView(@NonNull Application application, MainWindowViewModel viewModel) {
         this.application = application;
         this.viewModel = viewModel;
     }
