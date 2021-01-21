@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <VBox minHeight="320.0" minWidth="240.0" stylesheets="@../css/main.css" xmlns:fx="http://javafx.com/fxml/1"
-      xmlns="http://javafx.com/javafx/11.0.1" fx:controller="controller.MainWindowView">
+      xmlns="http://javafx.com/javafx/11.0.1" fx:controller="view.MainWindowView">
 
     <MenuBar VBox.vgrow="NEVER">
         <Menu mnemonicParsing="false" text="Task">

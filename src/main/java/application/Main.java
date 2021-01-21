@@ -1,6 +1,5 @@
 package application;
 
-import controller.MainWindowView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,6 +8,7 @@ import javafx.stage.Stage;
 import model.demo.DemoApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import view.MainWindowView;
 
 import java.net.URL;
 
