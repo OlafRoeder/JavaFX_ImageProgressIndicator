@@ -6,7 +6,8 @@ module TODO.Standard.Java.FX.Application.main {
 
     requires static lombok;
 
-    requires transitive org.slf4j;
+    requires org.slf4j;
+    requires org.apache.logging.log4j;
 
     exports application to javafx.graphics;
 
