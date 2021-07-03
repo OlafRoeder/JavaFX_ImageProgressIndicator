@@ -38,7 +38,7 @@ public class Main extends Application {
 //        primaryStage.setMaximized(true);
 
         // Load root layout from fxml file.
-        URL resource = Main.class.getResource("../view/MainWindowView.fxml");
+        URL resource = Main.class.getResource("/view/MainWindowView.fxml");
 
         FXMLLoader loader = new FXMLLoader();
 
