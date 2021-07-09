@@ -42,6 +42,9 @@ dependencies {
 
 application {
 
+    // name defined in module-info.java
+    mainModule = 'TODO.Standard.Java.FX.Application.main'
+
     // Define the main class for the application.
     mainClass = 'application.Main'
 
