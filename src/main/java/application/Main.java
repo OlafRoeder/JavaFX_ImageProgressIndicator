@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 import model.demo.DemoApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import view.MainWindowView;
 
 import java.net.URL;
 
@@ -33,11 +32,6 @@ public class Main extends Application {
 
         logger.debug("startup application");
 
-        // full screen settings
-//        primaryStage.initStyle(StageStyle.UNDECORATED);
-//        primaryStage.setMaximized(true);
-
-        // Load root layout from fxml file.
         URL resource = Main.class.getResource("/view/MainWindowView.fxml");
 
         FXMLLoader loader = new FXMLLoader();
@@ -50,9 +44,6 @@ public class Main extends Application {
         Scene scene = new Scene(mainWindow);
 
         primaryStage.setScene(scene);
-
-        //controller
-        MainWindowView controller = loader.getController();
 
         primaryStage.show();
     }

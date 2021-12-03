@@ -4,6 +4,7 @@ import application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import lombok.NonNull;
+import progressindicator.ImageProgressIndicator;
 
 public class MainWindowView {
 
@@ -11,7 +12,9 @@ public class MainWindowView {
     private final MainWindowViewModel viewModel;
 
     @FXML
-    private Label labelIdentifier;
+    private Label label;
+    @FXML
+    private ImageProgressIndicator progressIndicator;
 
     public MainWindowView(@NonNull Application application, MainWindowViewModel viewModel) {
         this.application = application;
@@ -20,8 +23,14 @@ public class MainWindowView {
 
     @FXML
     public void initialize() {
-        // place propertybindings here
-        labelIdentifier.textProperty().bind(viewModel.textProperty());
+        label.textProperty().bind(viewModel.textProperty());
+
+        progressIndicator.visibleProperty().bind(viewModel.progressVisibleProperty());
+        progressIndicator.progressProperty().bind(viewModel.progressProperty());
+        progressIndicator.progressPercentVisibleProperty().bind(viewModel.progressPercentVisibleProperty());
+
+        progressIndicator.textProperty().set("Progress Indicator initialized");
+        progressIndicator.progressProperty().addListener(observable -> progressIndicator.textProperty().set("Progress " + progressIndicator.getProgress() + "%"));
     }
 
     @FXML

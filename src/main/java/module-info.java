@@ -1,4 +1,4 @@
-module TODO.Standard.Java.FX.Application.main {
+module ImageProgressIndicator.Application.main {
 
     requires javafx.controls;
     requires javafx.fxml;
@@ -10,6 +10,8 @@ module TODO.Standard.Java.FX.Application.main {
     requires org.apache.logging.log4j;
 
     exports application to javafx.graphics;
+    exports progressindicator to javafx.fxml;
 
     opens view to javafx.fxml;
+    opens progressindicator to javafx.fxml;
 }

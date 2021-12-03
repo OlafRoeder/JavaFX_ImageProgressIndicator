@@ -1,7 +1,21 @@
-# Standard Java FX Application
+# JavaFX ImageProgressIndicator
 
-Template for a Java FX Application built with Gradle
+## Custom ProgressIndicator for JavaFX
 
-* Requires Java 11
+* ProgressIndicator that uses custom images as animation
+* usable just like the default ProgressIndicator
 
+### Requirements
+
+* JavaFX 8
+
+#### Demo only
+
+* Java 11
 * Uses Java 9 Platform Module System (JPMS)
+* Gradle
+
+### How To
+
+* check out repository
+* gradlew run

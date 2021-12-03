@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
-<VBox minHeight="320.0" minWidth="240.0" stylesheets="@../css/main.css" xmlns:fx="http://javafx.com/fxml/1"
-      xmlns="http://javafx.com/javafx/11" fx:controller="view.MainWindowView">
+<?import javafx.scene.layout.*?>
+<?import progressindicator.ImageProgressIndicator?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" minHeight="320.0" minWidth="240.0"
+      stylesheets="@../css/main.css, @../css/custom.css"
+      xmlns="http://javafx.com/javafx/11.0.2" fx:controller="view.MainWindowView">
 
     <MenuBar VBox.vgrow="NEVER">
         <Menu mnemonicParsing="false" text="File">
@@ -14,8 +15,14 @@
             <MenuItem mnemonicParsing="false" onAction="#onTask" text="Long running Task"/>
         </Menu>
     </MenuBar>
-    <StackPane prefHeight="150.0" prefWidth="200.0" VBox.vgrow="SOMETIMES">
-        <Label fx:id="labelIdentifier" text="Label"/>
+
+    <StackPane VBox.vgrow="SOMETIMES">
+        <VBox alignment="CENTER">
+            <Label fx:id="label"/>
+            <ImageProgressIndicator imageUrl="@../progressindicator/exampleAnimation.gif"
+                                    size="1"
+                                    fx:id="progressIndicator" visible="false"/>
+        </VBox>
     </StackPane>
 
 </VBox>
