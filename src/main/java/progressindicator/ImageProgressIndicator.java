@@ -45,4 +45,8 @@ public class ImageProgressIndicator extends ProgressIndicator {
     public BooleanProperty progressPercentVisibleProperty() {
         return imageProgressIndicatorSkin.progressPercentVisibleProperty();
     }
+
+    public BooleanProperty overlayVisibleProperty() {
+        return imageProgressIndicatorSkin.overlayVisibleProperty();
+    }
 }

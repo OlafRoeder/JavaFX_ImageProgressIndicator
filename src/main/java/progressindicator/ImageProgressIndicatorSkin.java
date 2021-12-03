@@ -2,6 +2,7 @@ package progressindicator;
 
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.StringProperty;
 import javafx.geometry.Pos;
@@ -25,6 +26,7 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
     private final Label progressPercent = new Label();
     private final VBox overlay = new VBox();
     private final ImageView imageView;
+    private final BooleanProperty overlayVisible = new SimpleBooleanProperty(true);
 
     ImageProgressIndicatorSkin(ImageProgressIndicator progressIndicator, URL imageUrl, double size) {
         super(progressIndicator);
@@ -66,7 +68,7 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
 
         imageView.managedProperty().bind(progressIndicator.visibleProperty());
 
-        overlay.visibleProperty().bind(progressIndicator.indeterminateProperty().not());
+        overlay.visibleProperty().bind(progressIndicator.indeterminateProperty().not().and(overlayVisible));
         overlay.managedProperty().bind(progressIndicator.visibleProperty());
         SimpleDoubleProperty one = new SimpleDoubleProperty(1);
         overlay.maxHeightProperty().bind(mainLayer.heightProperty().multiply(one.subtract(progressIndicator.progressProperty())));
@@ -89,5 +91,9 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
 
     BooleanProperty progressPercentVisibleProperty() {
         return progressPercent.visibleProperty();
+    }
+
+    BooleanProperty overlayVisibleProperty() {
+        return overlayVisible;
     }
 }

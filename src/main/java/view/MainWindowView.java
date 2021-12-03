@@ -28,6 +28,7 @@ public class MainWindowView {
         progressIndicator.visibleProperty().bind(viewModel.progressVisibleProperty());
         progressIndicator.progressProperty().bind(viewModel.progressProperty());
         progressIndicator.progressPercentVisibleProperty().bind(viewModel.progressPercentVisibleProperty());
+        progressIndicator.overlayVisibleProperty().set(false);
 
         progressIndicator.textProperty().set("Progress Indicator initialized");
         progressIndicator.progressProperty().addListener(observable -> progressIndicator.textProperty().set("Progress " + progressIndicator.getProgress() + "%"));
