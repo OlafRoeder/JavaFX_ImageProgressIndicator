@@ -4,6 +4,7 @@
 .image-progress-indicator .progress-percent {
     -fx-background-color: transparent;
     -fx-text-fill: derive(black,95%);
+    -fx-font-size: 42;
 }
 .image-progress-indicator .overlay {
     -fx-background-color: background-color;

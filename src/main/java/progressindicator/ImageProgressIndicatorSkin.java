@@ -12,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 
 import java.net.URL;
 import java.util.Objects;
@@ -77,7 +76,6 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
         progressIndicator.maxHeightProperty().bind(imageView.getImage().heightProperty());
 
         progressPercent.textProperty().bind(Bindings.createStringBinding(() -> progressIndicator.progressProperty().multiply(100).intValue() + "%", progressIndicator.progressProperty()));
-        mainLayer.widthProperty().addListener(observable -> progressPercent.setFont(Font.font(mainLayer.getWidth() / 3)));
         progressPercent.managedProperty().bind(progressPercent.visibleProperty());
     }
 
