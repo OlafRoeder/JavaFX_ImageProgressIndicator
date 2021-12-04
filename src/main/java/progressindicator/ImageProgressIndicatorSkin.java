@@ -27,22 +27,22 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
     private final ImageView imageView;
     private final BooleanProperty overlayVisible = new SimpleBooleanProperty(true);
 
-    ImageProgressIndicatorSkin(ImageProgressIndicator progressIndicator, URL imageUrl, double size) {
+    ImageProgressIndicatorSkin(ImageProgressIndicator progressIndicator, URL imageUrl, double imageSize) {
         super(progressIndicator);
 
         Objects.requireNonNull(progressIndicator);
         Objects.requireNonNull(imageUrl);
 
         this.progressIndicator = progressIndicator;
-        this.imageView = new ImageView(loadScaledImage(imageUrl, size));
+        this.imageView = new ImageView(loadScaledImage(imageUrl, imageSize));
 
         initialize();
     }
 
-    private Image loadScaledImage(URL imageUrl, double size) {
+    private Image loadScaledImage(URL imageUrl, double imageSize) {
 
         Image image = new Image(imageUrl.toExternalForm(), false);
-        image = new Image(image.getUrl(), image.getWidth() * size, image.getHeight() * size, true, true, true);
+        image = new Image(image.getUrl(), image.getWidth() * imageSize, image.getHeight() * imageSize, true, true, true);
 
         return image;
     }

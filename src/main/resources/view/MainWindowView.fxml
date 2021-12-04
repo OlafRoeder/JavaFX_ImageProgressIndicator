@@ -20,7 +20,7 @@
         <VBox alignment="CENTER">
             <Label fx:id="label"/>
             <ImageProgressIndicator imageUrl="@../progressindicator/exampleAnimation.gif"
-                                    size="1"
+                                    imageSize="1"
                                     fx:id="progressIndicator" visible="false"/>
         </VBox>
     </StackPane>
