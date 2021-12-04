@@ -3,8 +3,8 @@
 .image-progress-indicator .main-layer {}
 .image-progress-indicator .progress-percent {
     -fx-background-color: transparent;
-    -fx-text-fill: derive(black,95%);
-    -fx-font-size: 42;
+    -fx-text-fill: derive(black,10%);
+    -fx-font-size: 16;
 }
 .image-progress-indicator .overlay {
     -fx-background-color: background-color;

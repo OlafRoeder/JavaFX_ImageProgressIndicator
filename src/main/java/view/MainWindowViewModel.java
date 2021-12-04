@@ -67,6 +67,8 @@ public class MainWindowViewModel {
                     Thread.sleep(100);
                 }
 
+                Thread.sleep(1000);
+
                 Platform.runLater(() -> {
                     textProperty.set("long running task start - complete");
                     progressPercentVisible.set(false);

@@ -13,8 +13,10 @@ public class ImageProgressIndicator extends ProgressIndicator {
 
     private final ImageProgressIndicatorSkin imageProgressIndicatorSkin;
 
-    public ImageProgressIndicator(@NamedArg("imageUrl") String imageUrl, @NamedArg(value = "imageSize", defaultValue = "1") double imageSize) {
-        imageProgressIndicatorSkin = new ImageProgressIndicatorSkin(this, getUrl(imageUrl), imageSize);
+    public ImageProgressIndicator(@NamedArg("imageUrl") String imageUrl,
+                                  @NamedArg(value = "imageSize", defaultValue = "1") double imageSize,
+                                  @NamedArg(value = "orientation", defaultValue = "HORIZONTAL") ImageProgressIndicatorSkin.ORIENTATION orientation) {
+        imageProgressIndicatorSkin = new ImageProgressIndicatorSkin(this, getUrl(imageUrl), imageSize, orientation);
         setSkin(imageProgressIndicatorSkin);
         getStyleClass().add("image-progress-indicator");
         URL resource = getClass().getResource("ImageProgressIndicator.css");

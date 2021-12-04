@@ -19,8 +19,9 @@
     <StackPane VBox.vgrow="SOMETIMES">
         <VBox alignment="CENTER">
             <Label fx:id="label"/>
-            <ImageProgressIndicator imageUrl="@../progressindicator/exampleAnimation.gif"
+            <ImageProgressIndicator imageUrl="@../progressindicator/LoadingBar.png"
                                     imageSize="1"
+                                    orientation="HORIZONTAL"
                                     fx:id="progressIndicator" visible="false"/>
         </VBox>
     </StackPane>

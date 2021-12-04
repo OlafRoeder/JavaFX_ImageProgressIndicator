@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.Objects;
 
-class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
+public class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
 
     private final ImageProgressIndicator progressIndicator;
 
@@ -26,9 +26,11 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
     private final VBox overlay = new VBox();
     private final ImageView imageView;
     private final BooleanProperty overlayVisible = new SimpleBooleanProperty(true);
+    private final ORIENTATION orientation;
 
-    ImageProgressIndicatorSkin(ImageProgressIndicator progressIndicator, URL imageUrl, double imageSize) {
+    ImageProgressIndicatorSkin(ImageProgressIndicator progressIndicator, URL imageUrl, double imageSize, ORIENTATION orientation) {
         super(progressIndicator);
+        this.orientation = orientation;
 
         Objects.requireNonNull(progressIndicator);
         Objects.requireNonNull(imageUrl);
@@ -52,7 +54,6 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
         StackPane stackPane = new StackPane();
 
         stackPane.getChildren().addAll(imageView, overlay, progressPercent);
-        StackPane.setAlignment(overlay, Pos.TOP_CENTER);
 
         mainLayer.getChildren().addAll(stackPane, textLabel);
 
@@ -70,7 +71,18 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
         overlay.visibleProperty().bind(progressIndicator.indeterminateProperty().not().and(overlayVisible));
         overlay.managedProperty().bind(progressIndicator.visibleProperty());
         SimpleDoubleProperty one = new SimpleDoubleProperty(1);
-        overlay.maxHeightProperty().bind(mainLayer.heightProperty().multiply(one.subtract(progressIndicator.progressProperty())));
+        switch (orientation) {
+            case VERTICAL:
+                StackPane.setAlignment(overlay, Pos.TOP_CENTER);
+                overlay.maxHeightProperty().bind(mainLayer.heightProperty().multiply(one.subtract(progressIndicator.progressProperty())));
+                break;
+            case HORIZONTAL:
+                StackPane.setAlignment(overlay, Pos.CENTER_RIGHT);
+                overlay.maxWidthProperty().bind(mainLayer.widthProperty().multiply(one.subtract(progressIndicator.progressProperty())));
+                break;
+            default:
+                throw new EnumConstantNotPresentException(ORIENTATION.class, orientation.name());
+        }
 
         progressIndicator.maxWidthProperty().bind(Bindings.max(imageView.getImage().widthProperty(), textLabel.widthProperty()));
         progressIndicator.maxHeightProperty().bind(imageView.getImage().heightProperty());
@@ -93,5 +105,10 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
 
     BooleanProperty overlayVisibleProperty() {
         return overlayVisible;
+    }
+
+    public enum ORIENTATION {
+        HORIZONTAL,
+        VERTICAL;
     }
 }
