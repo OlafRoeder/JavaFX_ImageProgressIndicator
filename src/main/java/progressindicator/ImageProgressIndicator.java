@@ -23,7 +23,7 @@ public class ImageProgressIndicator extends ProgressIndicator {
     }
 
     private URL getUrl(String imageUrl) {
-        URL url = null;
+        URL url;
         try {
             url = new URL(imageUrl);
         } catch (MalformedURLException e) {
