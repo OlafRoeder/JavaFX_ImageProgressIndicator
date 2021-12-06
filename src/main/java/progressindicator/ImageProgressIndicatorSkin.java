@@ -16,26 +16,41 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.Objects;
 
-public class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
+/**
+ * This is a {@link javafx.scene.control.Skin} for an {@link ImageProgressIndicator}. This class is not intended for public use,
+ * refer to {@link ImageProgressIndicator} instead.
+ */
+class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
 
     private final ImageProgressIndicator progressIndicator;
 
     private final VBox mainLayer = new VBox();
+
     private final Label textLabel = new Label();
     private final Label progressPercent = new Label();
+
     private final VBox overlay = new VBox();
-    private final ImageView imageView;
     private final BooleanProperty overlayVisible = new SimpleBooleanProperty(true);
+
+    private final ImageView imageView;
     private final ORIENTATION orientation;
 
+    /**
+     * @param progressIndicator the {@link ImageProgressIndicator} to skin
+     * @param imageUrl          URL to image, Non-Null
+     * @param imageSize         image scale, 1.0 for original size
+     * @param orientation       HORIZONTAL for a horizontal progress bar, VERTICAL for a vertical progress bar (also suggested for square images), Non-Null
+     */
     ImageProgressIndicatorSkin(ImageProgressIndicator progressIndicator, URL imageUrl, double imageSize, ORIENTATION orientation) {
         super(progressIndicator);
-        this.orientation = orientation;
 
         Objects.requireNonNull(progressIndicator);
         Objects.requireNonNull(imageUrl);
+        Objects.requireNonNull(orientation);
 
         this.progressIndicator = progressIndicator;
+        this.orientation = orientation;
+
         this.imageView = new ImageView(loadScaledImage(imageUrl, imageSize));
 
         initialize();
@@ -91,24 +106,30 @@ public class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator>
         progressPercent.managedProperty().bind(progressPercent.visibleProperty());
     }
 
-    BooleanProperty textVisibleProperty() {
-        return textLabel.visibleProperty();
-    }
-
+    /**
+     * The Label's text below the progress indicator
+     *
+     * @return {@link StringProperty}
+     */
     StringProperty textProperty() {
         return textLabel.textProperty();
     }
 
+    /**
+     * The percentage text centered on the image, false to hide text, true to show text
+     *
+     * @return {@link BooleanProperty}
+     */
     BooleanProperty progressPercentVisibleProperty() {
         return progressPercent.visibleProperty();
     }
 
+    /**
+     * The overlay that makes a bar appear growing from left to right or bottom to top
+     *
+     * @return {@link BooleanProperty}
+     */
     BooleanProperty overlayVisibleProperty() {
         return overlayVisible;
-    }
-
-    public enum ORIENTATION {
-        HORIZONTAL,
-        VERTICAL;
     }
 }

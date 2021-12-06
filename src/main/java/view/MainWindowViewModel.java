@@ -15,7 +15,7 @@ public class MainWindowViewModel {
 
     private final Application application;
 
-    private final BooleanProperty progressVisible = new SimpleBooleanProperty();
+    private final BooleanProperty progressVisible = new SimpleBooleanProperty(false);
     private final BooleanProperty progressPercentVisible = new SimpleBooleanProperty(false);
     private final DoubleProperty progress = new SimpleDoubleProperty();
 
