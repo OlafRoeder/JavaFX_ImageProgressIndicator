@@ -10,6 +10,8 @@ import lombok.NonNull;
 import progressindicator.ImageProgressIndicator;
 import progressindicator.ORIENTATION;
 
+import java.util.Objects;
+
 public class MainWindowView {
 
     private final Application application;
@@ -35,7 +37,7 @@ public class MainWindowView {
     public void initialize() {
         label.textProperty().bind(viewModel.textProperty());
 
-        String url = ImageProgressIndicator.class.getResource("exampleAnimation.gif").toExternalForm();
+        String url = Objects.requireNonNull(ImageProgressIndicator.class.getResource("loadingCircle.gif")).toExternalForm();
         ImageProgressIndicator imageProgressIndicatorFromJava = new ImageProgressIndicator(url, 1, ORIENTATION.HORIZONTAL);
         imageProgressIndicatorFromJava.visibleProperty().bind(viewModel.progressVisibleProperty());
         imageProgressIndicatorFromJava.progressProperty().bind(viewModel.progressProperty());
