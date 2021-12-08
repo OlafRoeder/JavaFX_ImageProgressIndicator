@@ -12,9 +12,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Pair;
 
 import java.net.URL;
+import java.util.Map;
 import java.util.Objects;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * This is a {@link javafx.scene.control.Skin} for an {@link ImageProgressIndicator}. This class is not intended for public use,
@@ -25,17 +28,15 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
     private static final String MAIN_LAYER_STYLE_CLASS = "main-layer";
     private static final String OVERLAY_STYLE_CLASS = "overlay";
     private static final String PROGRESS_PERCENT_STYLE_CLASS = "progress-percent";
+    
+    private static final ImageCache IMAGE_CACHE = new ImageCache();
 
     private final ImageProgressIndicator progressIndicator;
-
     private final VBox mainLayer = new VBox();
-
     private final Label textLabel = new Label();
     private final Label progressPercent = new Label();
-
     private final VBox overlay = new VBox();
     private final BooleanProperty overlayVisible = new SimpleBooleanProperty(true);
-
     private final ImageView imageView;
     private final ORIENTATION orientation;
 
@@ -61,11 +62,7 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
     }
 
     private Image loadScaledImage(URL imageUrl, double imageSize) {
-
-        Image image = new Image(imageUrl.toExternalForm(), false);
-        image = new Image(image.getUrl(), image.getWidth() * imageSize, image.getHeight() * imageSize, true, true, true);
-
-        return image;
+        return IMAGE_CACHE.loadCachedImage(imageUrl, imageSize);
     }
 
     private void initialize() {
@@ -159,5 +156,33 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
      */
     BooleanProperty overlayVisibleProperty() {
         return overlayVisible;
+    }
+
+    /**
+     * To avoid overconsumption of memory by loading the same image more than once, this simple cache holds the last {@link ImageCache#MAX_CACHE_SIZE} images that were loaded before.
+     */
+    private static class ImageCache {
+
+        private final static int MAX_CACHE_SIZE = 5;
+
+        private final Map<Pair<URL, Double>, Image> imageCache = new ConcurrentHashMap<>(MAX_CACHE_SIZE);
+
+        private Image loadCachedImage(URL imageUrl, double imageSize) {
+
+            Pair<URL, Double> key = new Pair<>(imageUrl, imageSize);
+            Image cachedImage = imageCache.get(key);
+            if (cachedImage != null)
+                return cachedImage;
+
+            /*as this is a very simple cache and in most usecases there should be only a couple of images, invalidate cache*/
+            if (imageCache.size() >= MAX_CACHE_SIZE)
+                imageCache.clear();
+
+            Image image = new Image(imageUrl.toExternalForm(), false);
+            image = new Image(image.getUrl(), image.getWidth() * imageSize, image.getHeight() * imageSize, true, true, true);
+            imageCache.put(key, image);
+
+            return image;
+        }
     }
 }
