@@ -22,6 +22,10 @@ import java.util.Objects;
  */
 class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
 
+    private static final String MAIN_LAYER_STYLE_CLASS = "main-layer";
+    private static final String OVERLAY_STYLE_CLASS = "overlay";
+    private static final String PROGRESS_PERCENT_STYLE_CLASS = "progress-percent";
+
     private final ImageProgressIndicator progressIndicator;
 
     private final VBox mainLayer = new VBox();
@@ -66,26 +70,47 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
 
     private void initialize() {
 
-        StackPane stackPane = new StackPane();
+        initLayout();
+        initStyle();
+        initVisibility();
+        initManageability();
+        initOverlay();
+        initProgressIndicator();
+        initProgressPercent();
+    }
 
+    private void initLayout() {
+
+        StackPane stackPane = new StackPane();
         stackPane.getChildren().addAll(imageView, overlay, progressPercent);
 
         mainLayer.getChildren().addAll(stackPane, textLabel);
 
         getChildren().add(mainLayer);
+    }
 
-        mainLayer.getStyleClass().add("main-layer");
-        overlay.getStyleClass().add("overlay");
-        progressPercent.getStyleClass().add("progress-percent");
+    private void initStyle() {
+        mainLayer.getStyleClass().add(MAIN_LAYER_STYLE_CLASS);
+        overlay.getStyleClass().add(OVERLAY_STYLE_CLASS);
+        progressPercent.getStyleClass().add(PROGRESS_PERCENT_STYLE_CLASS);
+    }
 
-        textLabel.visibleProperty().bind(textLabel.textProperty().isNotEmpty());
-        textLabel.managedProperty().bind(textLabel.visibleProperty());
-
-        imageView.managedProperty().bind(progressIndicator.visibleProperty());
-
+    private void initVisibility() {
         overlay.visibleProperty().bind(progressIndicator.indeterminateProperty().not().and(overlayVisible));
+        textLabel.visibleProperty().bind(textLabel.textProperty().isNotEmpty());
+    }
+
+    private void initManageability() {
         overlay.managedProperty().bind(progressIndicator.visibleProperty());
+        imageView.managedProperty().bind(progressIndicator.visibleProperty());
+        textLabel.managedProperty().bind(textLabel.visibleProperty());
+        progressPercent.managedProperty().bind(progressPercent.visibleProperty());
+    }
+
+    private void initOverlay() {
+
         SimpleDoubleProperty one = new SimpleDoubleProperty(1);
+
         switch (orientation) {
             case VERTICAL:
                 StackPane.setAlignment(overlay, Pos.TOP_CENTER);
@@ -98,12 +123,15 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
             default:
                 throw new EnumConstantNotPresentException(ORIENTATION.class, orientation.name());
         }
+    }
 
+    private void initProgressIndicator() {
         progressIndicator.maxWidthProperty().bind(Bindings.max(imageView.getImage().widthProperty(), textLabel.widthProperty()));
         progressIndicator.maxHeightProperty().bind(imageView.getImage().heightProperty());
+    }
 
+    private void initProgressPercent() {
         progressPercent.textProperty().bind(Bindings.createStringBinding(() -> progressIndicator.progressProperty().multiply(100).intValue() + "%", progressIndicator.progressProperty()));
-        progressPercent.managedProperty().bind(progressPercent.visibleProperty());
     }
 
     /**
