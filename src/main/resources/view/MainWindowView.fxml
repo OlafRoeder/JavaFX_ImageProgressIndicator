@@ -1,41 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import progressindicator.ImageProgressIndicator?>
-<VBox xmlns:fx="http://javafx.com/fxml/1" minHeight="320.0" minWidth="720.0"
+<VBox xmlns:fx="http://javafx.com/fxml/1" minHeight="240.0" minWidth="720.0"
       stylesheets="@../css/main.css, @../css/custom.css"
-      xmlns="http://javafx.com/javafx/11.0.2" fx:controller="view.MainWindowView">
+      fx:controller="view.MainWindowView">
 
     <MenuBar VBox.vgrow="NEVER">
         <Menu mnemonicParsing="false" text="File">
-            <MenuItem mnemonicParsing="false" onAction="#onQuit" text="Quit"/>
+            <MenuItem onAction="#onQuit" text="Quit"/>
         </Menu>
         <Menu mnemonicParsing="false" text="Task">
-            <MenuItem mnemonicParsing="false" onAction="#onTask" text="Long running Task"/>
+            <MenuItem onAction="#onTask" text="Long running Task"/>
         </Menu>
     </MenuBar>
 
-    <StackPane VBox.vgrow="SOMETIMES">
-        <VBox>
-            <Label fx:id="label"/>
-            <HBox alignment="CENTER" spacing="16" fx:id="content">
-                <ImageProgressIndicator imageUrl="@../progressindicator/LoadingBar.png"
-                                        imageSize="1"
-                                        orientation="HORIZONTAL"
-                                        fx:id="determinateProgressIndicator"
-                                        visible="false"/>
-                <ImageProgressIndicator imageUrl="@../progressindicator/AnimatedHorizontalBar.gif"
-                                        imageSize="1"
-                                        orientation="HORIZONTAL"
-                                        fx:id="indeterminateProgressIndicator"
-                                        visible="false"/>
-                <ImageProgressIndicator imageUrl="@../progressindicator/LoadingBarVertical.png"
-                                        imageSize="1"
-                                        orientation="VERTICAL"
-                                        fx:id="verticalProgressIndicator"
-                                        visible="false"/>
-            </HBox>
-        </VBox>
-    </StackPane>
+    <VBox>
+        <Label fx:id="label"/>
+        <HBox alignment="CENTER" spacing="16" fx:id="content">
+            <ImageProgressIndicator imageUrl="@../progressindicator/LoadingBar.png"
+                                    imageSize="1"
+                                    orientation="HORIZONTAL"
+                                    fx:id="determinateProgressIndicator"
+                                    visible="false"/>
+            <ImageProgressIndicator imageUrl="@../progressindicator/AnimatedHorizontalBar.gif"
+                                    imageSize="1"
+                                    orientation="HORIZONTAL"
+                                    fx:id="indeterminateProgressIndicator"
+                                    visible="false"/>
+            <ImageProgressIndicator imageUrl="@../progressindicator/LoadingBarVertical.png"
+                                    imageSize="1"
+                                    orientation="VERTICAL"
+                                    fx:id="verticalProgressIndicator"
+                                    visible="false"/>
+        </HBox>
+    </VBox>
 </VBox>
