@@ -5,7 +5,7 @@
 * ProgressIndicator that uses custom images as animation
 * usable just like the default ProgressIndicator
 
-## Screenhots
+## Screenshots
 
 ### custom horizontal progress bar
 
