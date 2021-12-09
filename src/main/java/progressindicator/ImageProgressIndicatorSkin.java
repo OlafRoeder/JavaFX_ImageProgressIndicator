@@ -1,5 +1,6 @@
 package progressindicator;
 
+import javafx.beans.InvalidationListener;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -28,7 +29,7 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
     private static final String MAIN_LAYER_STYLE_CLASS = "main-layer";
     private static final String OVERLAY_STYLE_CLASS = "overlay";
     private static final String PROGRESS_PERCENT_STYLE_CLASS = "progress-percent";
-    
+
     private static final ImageCache IMAGE_CACHE = new ImageCache();
 
     private final ImageProgressIndicator progressIndicator;
@@ -123,7 +124,15 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
     }
 
     private void initProgressIndicator() {
-        progressIndicator.maxWidthProperty().bind(Bindings.max(imageView.getImage().widthProperty(), textLabel.widthProperty()));
+
+        //Bindings.max seems to be buggy, as in 'it doesn't work'
+        InvalidationListener invalidationListener = observable -> {
+            progressIndicator.maxWidthProperty().set(Math.max(imageView.getImage().widthProperty().doubleValue(), textLabel.prefWidthProperty().doubleValue()));
+            progressIndicator.prefWidthProperty().set(Math.max(imageView.getImage().widthProperty().doubleValue(), textLabel.prefWidthProperty().doubleValue()));
+        };
+        imageView.getImage().widthProperty().addListener(invalidationListener);
+        textLabel.prefWidthProperty().addListener(invalidationListener);
+
         progressIndicator.maxHeightProperty().bind(imageView.getImage().heightProperty());
     }
 
@@ -179,7 +188,7 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
                 imageCache.clear();
 
             Image image = new Image(imageUrl.toExternalForm(), false);
-            image = new Image(image.getUrl(), image.getWidth() * imageSize, image.getHeight() * imageSize, true, true, true);
+            image = new Image(image.getUrl(), image.getWidth() * imageSize, image.getHeight() * imageSize, true, true, false);
             imageCache.put(key, image);
 
             return image;
