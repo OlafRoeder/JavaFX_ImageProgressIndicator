@@ -23,18 +23,15 @@
             <ImageProgressIndicator imageUrl="@../../progressindicator/LoadingBar.png"
                                     imageSize="1"
                                     orientation="HORIZONTAL"
-                                    fx:id="determinateProgressIndicator"
-                                    visible="false"/>
+                                    fx:id="determinateProgressIndicator"/>
             <ImageProgressIndicator imageUrl="@../../progressindicator/AnimatedHorizontalBar.gif"
                                     imageSize="1"
                                     orientation="HORIZONTAL"
-                                    fx:id="indeterminateProgressIndicator"
-                                    visible="false"/>
+                                    fx:id="indeterminateProgressIndicator"/>
             <ImageProgressIndicator imageUrl="@../../progressindicator/LoadingBarVertical.png"
                                     imageSize="1"
                                     orientation="VERTICAL"
-                                    fx:id="verticalProgressIndicator"
-                                    visible="false"/>
+                                    fx:id="verticalProgressIndicator"/>
         </HBox>
     </VBox>
 </VBox>

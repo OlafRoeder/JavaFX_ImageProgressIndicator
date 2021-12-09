@@ -1,12 +1,12 @@
 .image-progress-indicator {}
 .image-progress-indicator .label {}
 .image-progress-indicator .main-layer {}
+.image-progress-indicator .overlay {
+    -fx-background-color: background-color;
+    -fx-opacity: 0.8;
+}
 .image-progress-indicator .progress-percent {
     -fx-background-color: transparent;
     -fx-text-fill: derive(black,10%);
     -fx-font-size: 10;
-}
-.image-progress-indicator .overlay {
-    -fx-background-color: background-color;
-    -fx-opacity: 0.8;
 }
