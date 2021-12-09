@@ -15,7 +15,7 @@ plugins {
 }
 
 group 'de.olaf-roeder'
-version '0.1-DEVELOPER'
+version '1.0'
 
 sourceCompatibility = 1.11
 targetCompatibility = 1.11
@@ -50,6 +50,6 @@ application {
 javafx {
 
     version = '11'
-    modules = ['javafx.controls', 'javafx.fxml', 'javafx.swing', 'javafx.web']
+    modules = ['javafx.controls', 'javafx.fxml', 'javafx.web']
 
 }

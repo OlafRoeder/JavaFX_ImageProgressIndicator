@@ -183,7 +183,7 @@ class ImageProgressIndicatorSkin extends SkinBase<ImageProgressIndicator> {
             if (cachedImage != null)
                 return cachedImage;
 
-            /*as this is a very simple cache and in most usecases there should be only a couple of images, invalidate cache*/
+            /* as this is a very simple cache and in most use cases there should be only a couple of images, invalidate cache */
             if (imageCache.size() >= MAX_CACHE_SIZE)
                 imageCache.clear();
 
