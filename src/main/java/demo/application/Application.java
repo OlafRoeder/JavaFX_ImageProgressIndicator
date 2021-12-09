@@ -3,12 +3,7 @@ package demo.application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-
 public class Application {
-
-    public static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
 
     private final ApplicationType applicationType;
 
