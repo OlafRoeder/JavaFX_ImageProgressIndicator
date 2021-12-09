@@ -1,4 +1,4 @@
-package concurrency;
+package demo.concurrency;
 
 import lombok.NonNull;
 import org.slf4j.Logger;

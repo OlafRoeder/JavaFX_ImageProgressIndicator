@@ -1,6 +1,6 @@
-package view;
+package demo.view;
 
-import application.Application;
+import demo.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

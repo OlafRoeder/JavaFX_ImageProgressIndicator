@@ -1,8 +1,8 @@
-package application;
+package demo.application;
 
+import demo.view.MainWindowView;
+import demo.view.MainWindowViewModel;
 import javafx.util.Callback;
-import view.MainWindowView;
-import view.MainWindowViewModel;
 
 class FXMLControllerFactory implements Callback<Class<?>, Object> {
 

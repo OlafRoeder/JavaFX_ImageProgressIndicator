@@ -1,11 +1,11 @@
-package application;
+package demo.application;
 
 import javafx.concurrent.Task;
 
 public interface ApplicationType {
 
     /**
-     * Prints type of application.
+     * Prints type of demo.application.
      */
     void printApplicationType();
 

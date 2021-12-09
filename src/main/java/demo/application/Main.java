@@ -1,11 +1,11 @@
-package application;
+package demo.application;
 
+import demo.model.demo.DemoApplication;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.demo.DemoApplication;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +15,7 @@ public class Main extends Application {
 
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
-    private application.Application application;
+    private demo.application.Application application;
 
     public static void main(String[] args) {
         Application.launch(args);
@@ -23,16 +23,16 @@ public class Main extends Application {
 
     @Override
     public void init() {
-        logger.debug("initialize application");
+        logger.debug("initialize demo.application");
         application = ApplicationFactory.createApplication(new DemoApplication());
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        logger.debug("startup application");
+        logger.debug("startup demo.application");
 
-        URL resource = Main.class.getResource("/view/MainWindowView.fxml");
+        URL resource = Main.class.getResource("/demo/view/MainWindowView.fxml");
 
         FXMLLoader loader = new FXMLLoader();
 

@@ -1,4 +1,4 @@
-package application;
+package demo.application;
 
 import javafx.application.Platform;
 import javafx.concurrent.Task;

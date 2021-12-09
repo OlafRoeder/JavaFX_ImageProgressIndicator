@@ -1,7 +1,7 @@
-package model.demo;
+package demo.model.demo;
 
-import application.ApplicationType;
-import concurrency.GlobalExecutorService;
+import demo.application.ApplicationType;
+import demo.concurrency.GlobalExecutorService;
 import javafx.concurrent.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +12,7 @@ public class DemoApplication implements ApplicationType {
 
     @Override
     public void printApplicationType() {
-        logger.info("Starting demo application");
+        logger.info("Starting demo demo.application");
     }
 
     @Override

@@ -1,6 +1,6 @@
-package view;
+package demo.view;
 
-import application.Application;
+import demo.application.Application;
 import javafx.application.Platform;
 import javafx.beans.property.*;
 import javafx.concurrent.Task;

@@ -1,4 +1,4 @@
-package application;
+package demo.application;
 
 class ApplicationFactory {
 

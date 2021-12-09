@@ -42,8 +42,8 @@ application {
     // name defined in module-info.java
     mainModule = 'ImageProgressIndicator.Application.main'
 
-    // Define the main class for the application.
-    mainClass = 'application.Main'
+    // Define the main class for the demo.application.
+    mainClass = 'demo.application.Main'
 
 }
 
