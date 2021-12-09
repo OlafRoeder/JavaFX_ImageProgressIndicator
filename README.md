@@ -32,7 +32,7 @@
 
 ## Usage in FXML
 
-See resources/demo/view/MainWindowView.fxml for a full example.
+See src/main/resources/demo/view/MainWindowView.fxml for a full example.
 
 ```
 <?import progressindicator.ImageProgressIndicator?>
@@ -47,12 +47,12 @@ See resources/demo/view/MainWindowView.fxml for a full example.
 <br>`imageUrl`: relative path to the image that should be used as progress indicator. Note the @-sign at the beginning
 of the string. Any image supported by JavaFX can be used. Try an animated gif :)
 <br>`imageSize`: Size to scale the image, default 1
-<br>`orientation`: HORIZONTAL or VERTICAL: determines the orientation of the layer that covers determinate progress
-bars;
+<br>`orientation`: HORIZONTAL or VERTICAL: determines the orientation of the layer that covers determinate progress bars
 
 ## Usage in Java
 
 See JavaDoc for a full description.
+<br>See src/main/java/demo/view/MainWindowView.java for a full example.
 
 ```
 String imageUrl = ImageProgressIndicator.class.getResource("loadingCircle.gif").toExternalForm();
@@ -64,8 +64,7 @@ ImageProgressIndicator imageProgressIndicator = new ImageProgressIndicator(image
 <br>`imageUrl`: URL to the image that should be used as progress indicator. Any image supported by JavaFX can be used.
 Try an animated gif :)
 <br>`imageSize`: Size to scale the image, default 1
-<br>`orientation`: HORIZONTAL or VERTICAL: determines the orientation of the layer that covers determinate progress
-bars;
+<br>`orientation`: HORIZONTAL or VERTICAL: determines the orientation of the layer that covers determinate progress bars
 
 ### Extra Properties
 
@@ -78,7 +77,7 @@ to top
 
 ## Styling
 
-See resources/progressindicator/ImageProgressIndicator.css for an example.
+See src/main/resources/progressindicator/ImageProgressIndicator.css for an example.
 
 Four styleclasses are added for styling:
 <br>`image-progress-indicator`: Styleclass of the main component.
