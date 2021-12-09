@@ -53,21 +53,21 @@ public class MainWindowView {
         determinateProgressIndicator.progressPercentVisibleProperty().bind(viewModel.progressPercentVisibleProperty());
 
         determinateProgressIndicator.textProperty().set("Progress Indicator initialized");
-        determinateProgressIndicator.progressProperty().addListener(observable -> determinateProgressIndicator.textProperty().set("Progress " + determinateProgressIndicator.getProgress() * 100 + "%"));
+        determinateProgressIndicator.progressProperty().addListener(observable -> determinateProgressIndicator.textProperty().set("Progress " + (int) (determinateProgressIndicator.getProgress() * 100) + "%"));
 
         indeterminateProgressIndicator.visibleProperty().bind(viewModel.progressVisibleProperty());
         indeterminateProgressIndicator.progressProperty().set(ProgressIndicator.INDETERMINATE_PROGRESS);
         Platform.runLater(() -> indeterminateProgressIndicator.progressPercentVisibleProperty().set(false));
 
         indeterminateProgressIndicator.textProperty().set(" ");
-        indeterminateProgressIndicator.progressProperty().addListener(observable -> indeterminateProgressIndicator.textProperty().set("Progress " + determinateProgressIndicator.getProgress() + "%"));
+        indeterminateProgressIndicator.progressProperty().addListener(observable -> indeterminateProgressIndicator.textProperty().set("Progress " + (int) (determinateProgressIndicator.getProgress()) + "%"));
 
         verticalProgressIndicator.visibleProperty().bind(viewModel.progressVisibleProperty());
         verticalProgressIndicator.progressProperty().bind(viewModel.progressProperty());
         verticalProgressIndicator.progressPercentVisibleProperty().bind(viewModel.progressPercentVisibleProperty());
 
         verticalProgressIndicator.textProperty().set("Progress Indicator initialized");
-        verticalProgressIndicator.progressProperty().addListener(observable -> verticalProgressIndicator.textProperty().set("Progress " + determinateProgressIndicator.getProgress() * 100 + "%"));
+        verticalProgressIndicator.progressProperty().addListener(observable -> verticalProgressIndicator.textProperty().set("Progress " + (int) (determinateProgressIndicator.getProgress() * 100) + "%"));
     }
 
     @FXML
