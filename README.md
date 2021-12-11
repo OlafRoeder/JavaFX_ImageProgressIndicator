@@ -82,6 +82,6 @@ See src/main/resources/progressindicator/ImageProgressIndicator.css for an examp
 Four styleclasses are added for styling:
 <br>`image-progress-indicator`: Styleclass of the main component.
 <br>`main-layer`: Styleclass of the main layer inside the progress indicator, contains the ImageView.
-<br>`overlay<`: Styleclass of the layer that covers the image during determinate progress. Set `-fx-opacity` to 0 to
-hide the layer.
+<br>`overlay`: Styleclass of the layer that covers the image during determinate progress. Set `-fx-opacity` to 0 to hide
+the layer.
 <br>`progress-percent`: Styleclass of the layer displaying the progress on top of the image.
