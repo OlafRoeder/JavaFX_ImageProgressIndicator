@@ -1,4 +1,4 @@
-package demo.application;
+package de.olaf_roeder.progressindicator.demo.application;
 
 import javafx.concurrent.Task;
 

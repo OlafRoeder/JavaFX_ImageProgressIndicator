@@ -1,4 +1,4 @@
-package progressindicator;
+package de.olaf_roeder.progressindicator;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.binding.Bindings;

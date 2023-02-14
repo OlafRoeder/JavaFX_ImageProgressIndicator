@@ -1,6 +1,6 @@
-package demo.view;
+package de.olaf_roeder.progressindicator.demo.view;
 
-import demo.application.Application;
+import de.olaf_roeder.progressindicator.demo.application.Application;
 import javafx.application.Platform;
 import javafx.beans.property.*;
 import javafx.concurrent.Task;

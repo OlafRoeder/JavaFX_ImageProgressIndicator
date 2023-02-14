@@ -1,4 +1,4 @@
-package demo.concurrency;
+package de.olaf_roeder.progressindicator.demo.concurrency;
 
 import lombok.NonNull;
 import org.slf4j.Logger;

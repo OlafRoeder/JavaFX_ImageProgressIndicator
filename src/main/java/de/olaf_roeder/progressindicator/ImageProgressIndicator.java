@@ -1,4 +1,4 @@
-package progressindicator;
+package de.olaf_roeder.progressindicator;
 
 import javafx.beans.NamedArg;
 import javafx.beans.property.BooleanProperty;

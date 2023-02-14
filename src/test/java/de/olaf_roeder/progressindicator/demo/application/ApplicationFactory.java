@@ -1,4 +1,4 @@
-package demo.application;
+package de.olaf_roeder.progressindicator.demo.application;
 
 class ApplicationFactory {
 

@@ -1,7 +1,7 @@
-package demo.model.demo;
+package de.olaf_roeder.progressindicator.demo.model.demo;
 
-import demo.application.ApplicationType;
-import demo.concurrency.GlobalExecutorService;
+import de.olaf_roeder.progressindicator.demo.application.ApplicationType;
+import de.olaf_roeder.progressindicator.demo.concurrency.GlobalExecutorService;
 import javafx.concurrent.Task;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

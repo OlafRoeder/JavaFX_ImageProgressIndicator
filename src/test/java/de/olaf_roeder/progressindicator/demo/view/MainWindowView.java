@@ -1,14 +1,14 @@
-package demo.view;
+package de.olaf_roeder.progressindicator.demo.view;
 
-import demo.application.Application;
+import de.olaf_roeder.progressindicator.ImageProgressIndicator;
+import de.olaf_roeder.progressindicator.ORIENTATION;
+import de.olaf_roeder.progressindicator.demo.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.HBox;
 import lombok.NonNull;
-import progressindicator.ImageProgressIndicator;
-import progressindicator.ORIENTATION;
 
 import java.util.Objects;
 
@@ -37,7 +37,7 @@ public class MainWindowView {
     public void initialize() {
         label.textProperty().bind(viewModel.textProperty());
 
-        String url = Objects.requireNonNull(ImageProgressIndicator.class.getResource("loadingCircle.gif")).toExternalForm();
+        String url = Objects.requireNonNull(MainWindowView.class.getResource("../img/loadingCircle.gif")).toExternalForm();
         ImageProgressIndicator imageProgressIndicatorFromJava = new ImageProgressIndicator(url, 1, ORIENTATION.HORIZONTAL);
         imageProgressIndicatorFromJava.visibleProperty().bind(viewModel.progressVisibleProperty());
         imageProgressIndicatorFromJava.progressProperty().bind(viewModel.progressProperty());

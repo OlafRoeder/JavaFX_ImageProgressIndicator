@@ -1,7 +1,7 @@
-package demo.application;
+package de.olaf_roeder.progressindicator.demo.application;
 
-import demo.view.MainWindowView;
-import demo.view.MainWindowViewModel;
+import de.olaf_roeder.progressindicator.demo.view.MainWindowView;
+import de.olaf_roeder.progressindicator.demo.view.MainWindowViewModel;
 import javafx.util.Callback;
 
 class FXMLControllerFactory implements Callback<Class<?>, Object> {
