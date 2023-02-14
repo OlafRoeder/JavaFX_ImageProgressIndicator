@@ -22,13 +22,12 @@
 ### Demo only
 
 * Java 11
-* Uses Java 9 Platform Module System (JPMS)
 * Gradle
 
 ## How To
 
 * check out repository
-* gradlew run
+* run src/test/java/demo/application/DemoRunner.java
 
 ## Usage in FXML
 
