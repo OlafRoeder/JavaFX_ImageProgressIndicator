@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.net.URL;
+import java.util.Objects;
 
 public class Main extends Application {
 
@@ -47,14 +48,14 @@ public class Main extends Application {
         primaryStage.setScene(scene);
 
         primaryStage.getIcons().addAll(
-                new Image(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_16x16.png")),
-                new Image(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_24x24.png")),
-                new Image(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_32x32.png")),
-                new Image(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_40x40.png")),
-                new Image(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_48x48.png")),
-                new Image(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_64x64.png")),
-                new Image(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_128x128.png")),
-                new Image(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_256x256.png"))
+                new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_16x16.png"))),
+                new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_24x24.png"))),
+                new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_32x32.png"))),
+                new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_40x40.png"))),
+                new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_48x48.png"))),
+                new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_64x64.png"))),
+                new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_128x128.png"))),
+                new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/de/olaf_roeder/progressindicator/demo/img/info_256x256.png")))
         );
 
         primaryStage.show();
