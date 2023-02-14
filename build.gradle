@@ -5,7 +5,7 @@ plugins {
 
     // Plugin to use JavaFX, provides the javafx task
     // https://github.com/openjfx/javafx-gradle-plugin
-    id 'org.openjfx.javafxplugin' version '0.0.10'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
 
     // @NonNull annotations
     id "io.freefair.lombok" version "6.0.0-m2"
