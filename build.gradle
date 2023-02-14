@@ -14,6 +14,7 @@ plugins {
 group 'de.olaf-roeder'
 version '1.0'
 
+// LTS until September 2023
 sourceCompatibility = 1.11
 targetCompatibility = 1.11
 
