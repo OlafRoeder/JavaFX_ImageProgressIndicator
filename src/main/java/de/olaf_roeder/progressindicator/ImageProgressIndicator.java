@@ -7,6 +7,7 @@ import javafx.scene.control.ProgressIndicator;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URI;
 import java.text.MessageFormat;
 import java.util.Objects;
 
@@ -51,8 +52,8 @@ public class ImageProgressIndicator extends ProgressIndicator {
     private URL getUrl(String imageUrl) {
         URL url;
         try {
-            url = new URL(imageUrl);
-        } catch (MalformedURLException e) {
+            url = URI.create(imageUrl).toURL();
+        } catch (MalformedURLException | IllegalArgumentException e) {
             throw new IllegalArgumentException(MessageFormat.format("Argument {0} is no valid URL, correct argument:\n" +
                     "from FXML: @relative-path-to-image-file\n (preferred)" +
                     "from Java: URL-to-file\n" +
