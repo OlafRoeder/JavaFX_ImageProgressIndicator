@@ -17,24 +17,31 @@
 
 ## Requirements
 
-* JavaFX 8
+Build with a stable JDK 27 and the checked-in Gradle 9.8.2 wrapper. Set JAVA_HOME
+to JDK 27 and select JDK 27 for the IDE's Gradle JVM. The daemon and compiler
+use Java 27; the library targets Java 25, matching JavaFX 27's minimum runtime.
+The OpenJFX plugin supplies platform-specific JavaFX dependencies and native libraries.
 
-### Demo only
+```sh
+./gradlew clean build --no-daemon
+```
 
-* Java 11
-* Gradle
+Lombok 1.18.48 adds JDK 27 compiler support; FreeFair Lombok 9.8.2 supports the
+Gradle 9.8 build. See https://projectlombok.org/changelog and
+https://docs.gradle.org/current/userguide/compatibility.html . JavaFX requirements:
+https://docs.oracle.com/en/java/java-components/javafx/27/release-notes/ .
 
-## How To
-
-* check out repository
-* run src/test/java/demo/application/DemoRunner.java
+The demo remains in `src/test/java/de/olaf_roeder/progressindicator/demo`.
+Its entry point is `de.olaf_roeder.progressindicator.demo.application.DemoRunner`.
+Enable native access for `javafx.graphics` when launching the demo on JDK 27.
+There are no automated tests in this repository; `build` compiles the library and demo.
 
 ## Usage in FXML
 
 See src/main/resources/demo/view/MainWindowView.fxml for a full example.
 
 ```
-<?import progressindicator.ImageProgressIndicator?>
+<?import de.olaf_roeder.progressindicator.ImageProgressIndicator?>
 <ImageProgressIndicator imageUrl="@../progressindicator/LoadingBar.png"
                                     imageSize="1"
                                     orientation="HORIZONTAL"

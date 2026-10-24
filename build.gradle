@@ -1,51 +1,38 @@
 plugins {
-
-    // Apply the java-library plugin to add support for Java
     id 'java-library'
-
-    // Plugin to use JavaFX, provides the javafx task
-    // https://github.com/openjfx/javafx-gradle-plugin
+    // Resolves JavaFX artifacts and native libraries for the host platform.
     id 'org.openjfx.javafxplugin' version '0.1.0'
-
-    // https://plugins.gradle.org/plugin/io.freefair.lombok
-    id "io.freefair.lombok" version "8.10.2"
+    id 'io.freefair.lombok' version '9.8.2'
 }
 
-group 'de.olaf-roeder'
-version '1.0.1'
+group = 'de.olaf-roeder'
+version = '1.0.1'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
-
+    toolchain { languageVersion = JavaLanguageVersion.of(27) }
     withSourcesJar()
     withJavadocJar()
 }
 
-repositories {
-    mavenCentral()
-}
+// JavaFX 27 itself requires Java 25 or newer.
+tasks.named('compileJava', JavaCompile) { options.release = 25 }
+lombok { version = '1.18.48' }
+tasks.named('updateDaemonJvm') { toolchainPlatforms = [] }
+
+repositories { mavenCentral() }
 
 dependencies {
-
-    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.16'
-
-    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.24.1'
-    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.24.1'
-    // https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j2-impl', version: '2.24.1'
-}
-
-test {
-    // there are no tests, configuration is only here to resolve warnings
+    implementation 'org.slf4j:slf4j-api:2.0.20'
+    implementation platform('org.apache.logging.log4j:log4j-bom:2.26.1')
+    implementation 'org.apache.logging.log4j:log4j-api'
+    runtimeOnly 'org.apache.logging.log4j:log4j-core'
+    runtimeOnly 'org.apache.logging.log4j:log4j-slf4j2-impl'
 }
 
 javafx {
-
-    version = '21'
+    version = '27'
     modules = ['javafx.controls', 'javafx.fxml']
-
 }
+
+// src/test contains an interactive demo, not automated test cases.
+tasks.named('test', Test) { failOnNoDiscoveredTests = false }
